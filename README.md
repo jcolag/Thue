@@ -60,13 +60,15 @@ Sample programs included are:
  - `incany.t`:  Increments a binary number input by the user
  - `test.t`:  A simple example to highlight nondeterminism
 
+Other bits of code are available around the Internet, of course.
+
     > Amusing.
 
 Apologies to Axel Thue for mangling the pronunciation of his name for a cheap joke.  Apologies to whatever is left of Infocom for (unknowingly) supplying the format of the cheap joke.
 
 Thue(footnote 1) is described in some detail [on Wikipedia](https://en.wikipedia.org/wiki/Thue_%28programming_language%29), as well.
 
-    > Footnote 1
+    > Footnote 1.
 
 The Thue interpreter was written a long time ago and has not been maintained to any significant extent.  It may do strange things and will certainly be formatted oddly.  I had peculiar ideas of how C code should look, back then.
 
