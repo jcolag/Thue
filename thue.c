@@ -1,42 +1,26 @@
-/* $Header: C:\\UTILS\\CVS\\ROOT/programs\\lang\\thue/thue.c,v 1.4 2000/09/02 16:46:29 John Colagioia Exp $
- *
- * Recent Changes:
- *
- * $Log: thue.c,v $
- * Revision 1.4  2000/09/02 16:46:29  John Colagioia
- * Trivial bugfix.
- *
- * Revision 1.2  2000/02/29 21:51:24  John Colagioia
- *
- * Just added some basic header info in the comments.
- *
- *
- */
-
 /* For want of a nail,
-    the shoe was lost.
-   For want of a shoe,
-    the horse was lost.
-   For want of a horse,
-    the knight was lost.
-   For want of a knight,
-    the battle was lost.
-   So it was a kingdom was lost,
-    all for the want of a nail.
-	-- George Herbert, Jacula Prudentum
-	   (Colloqual Adaptation)
-*/
+ *  the shoe was lost.
+ * For want of a shoe,
+ *  the horse was lost.
+ * For want of a horse,
+ *  the knight was lost.
+ * For want of a knight,
+ *  the battle was lost.
+ * So it was a kingdom was lost,
+ *  all for the want of a nail.
+ *      -- George Herbert, Jacula Prudentum
+ *         (Colloqual Adaptation)
+ */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <mem.h>
 #include <time.h>
 
 #define	SEP	"::="
 
-	char	* getline	(FILE * infile);
+char	* nextinput	(FILE * infile);
 
 struct rule
 	{
@@ -64,7 +48,7 @@ int main (int argc, char *argv[])
 	 rnum[64];
  FILE	*infile;
 
- randomize ();
+ srand(time(0));
  target[0] = dataspace;
  memset (rulebase, 0, sizeof (rulebase));
  memset (dataspace, 0, sizeof (dataspace));
@@ -94,7 +78,7 @@ int main (int argc, char *argv[])
  state = 0;
  while (!feof (infile))
 	{
-	 line = getline (infile);
+	 line = nextinput (infile);
 	 if (state == 0)
 		{
 		 if (line != NULL && !strlen (line))
@@ -110,7 +94,7 @@ int main (int argc, char *argv[])
 				if (!isspace (*tmp))
 					 flagstate = 1;
 			 if (flagstate)
-				{				
+				{
 				 *c = '\000';
 				 c += strlen (SEP);
 				 strcpy (rulebase[ruleidx].lhs, line);
@@ -159,12 +143,15 @@ int main (int argc, char *argv[])
 
 	 /* Sort the LHS list - Just a bubble sort */
 	 for (i=1;i<j;i++)
-	    for (k=0;k<i;k++)
+	    for (k=1;k<i;k++)
 		if (target[i] < target[k])
 			{
-			 c = target[i];		temp = rnum[i];
-			 target[i] = target[k];	rnum[i] = rnum[k];
-			 target[k] = target[i];	rnum[k] = temp;
+			 c = target[i];
+			 temp = rnum[i];
+			 target[i] = target[k];
+			 rnum[i] = rnum[k];
+			 target[k] = c;
+			 rnum[k] = temp;
 			}
 
 	 /* Choose rule to apply */
@@ -177,7 +164,7 @@ int main (int argc, char *argv[])
 			i = 1;
 			break;
 		 default:
-			i = random (j - 1) + 1;
+			i = rand() % (j - 1) + 1;
 			break;
 		}
 	 line = target[i];
@@ -211,18 +198,19 @@ int main (int argc, char *argv[])
  return (0);
 }
 
-char * getline (FILE * infile)
+char * nextinput (FILE * infile)
 {
- static	char	 inline[256];
+ static	char	 inputline[256];
 	char	*eol;
 	int	 c;
 
- memset (inline, 0, sizeof (inline));
+ memset (inputline, 0, sizeof (inputline));
  /* Get next line from file */
- c = fscanf (infile, "%[^\n]", inline);
+ c = fscanf (infile, "%[^\n]", inputline);
  if (c < 0)
 	return (NULL);
  c = fgetc (infile);
  /* Return pointer to string */
- return (inline);
+ return (inputline);
 }
+
