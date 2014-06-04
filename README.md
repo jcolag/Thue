@@ -29,7 +29,7 @@ Don't worry about it.  It's an [Infocom](https://en.wikipedia.org/wiki/Infocom) 
 
 Actually, let's go with it.  A [burin](https://en.wikipedia.org/wiki/Burin) is tool to inscribe mystical symbols into an object.  Thue has one.
 
-> Examine burin.
+    > Examine burin.
 
 Added to this simple system are two strings which are used to permit Thue to communicate with the outside world.
 
