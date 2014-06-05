@@ -202,14 +202,16 @@ char * nextinput (FILE * infile)
 {
  static	char	 inputline[256];
 	char	*eol;
-	int	 c;
+	int	 idx;
 
  memset (inputline, 0, sizeof (inputline));
  /* Get next line from file */
- c = fscanf (infile, "%[^\n]", inputline);
- if (c < 0)
+ eol = fgets(inputline, sizeof(inputline), infile);
+ if (eol == NULL)
 	return (NULL);
- c = fgetc (infile);
+ for (idx=strlen(inputline)-1;isspace(inputline[idx]);idx--) {
+    inputline[idx] = '\000';
+ }
  /* Return pointer to string */
  return (inputline);
 }
