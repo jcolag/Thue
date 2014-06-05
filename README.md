@@ -44,11 +44,11 @@ Note that either (or both) of these implicit rules may be overridden by providin
 The implementation of Thue, itself, is rather uninteresting, except for
 three command-line switches:
 
- - _-d_:  Activates "Debug Mode," which prints the state immediately after any rule is applied.
- - _-l_:  Activates "Left Mode," which requires Thue to apply rules deterministically in a left-to-right fashion.
- - _-r_:  Activates "Right Mode," which is identical to "Left Mode," except that rule application occurs right-to-left.
+ - __`d`__:  Activates "Debug Mode," which prints the state immediately after any rule is applied.
+ - __`l`__:  Activates "Left Mode," which requires Thue to apply rules deterministically in a left-to-right fashion.
+ - __`r`__:  Activates "Right Mode," which is identical to "Left Mode," except that rule application occurs right-to-left.
 
-The command-line switches must appear after the Thue filename, and the last incidence of 'l' or 'r' overrides all others.
+The command-line switches must appear after the Thue filename (i.e., `thue examples/hello.t d`), and the last incidence of 'l' or 'r' overrides all others.
 
     > Look under Thue.
 
@@ -66,13 +66,21 @@ Other bits of code are available around the Internet, of course.
 
 Apologies to Axel Thue for mangling the pronunciation of his name for a cheap joke.  Apologies to whatever is left of Infocom for (unknowingly) supplying the format of the cheap joke.
 
-Thue(footnote 1) is described in some detail [on Wikipedia](https://en.wikipedia.org/wiki/Thue_%28programming_language%29), as well.
+Thue(__footnote 1__) is described in some detail [on Wikipedia](https://en.wikipedia.org/wiki/Thue_%28programming_language%29)(__footnote 2__), as well.
 
     > Footnote 1.
 
 The Thue interpreter was written a long time ago and has not been maintained to any significant extent.  It may do strange things and will certainly be formatted oddly.  I had peculiar ideas of how C code should look, back then.
 
-Also, the original release (which can still be found across the Internet) used a notification-only public license.  For this release forward, I have changed this to the GPLv3.  In fifteen years, nobody notified me that they were using it, so I don't think I'm letting a massive audience down and I would rather any forks or changes be made available to the world.
+Also, the original release (which can still be found across the Internet) used a notification-only public license.  For this release forward, I have changed this to the GPLv3.  In fifteen years, nobody notified me that they were using it, so I don't think I'm letting a massive audience down and I would rather any forks or changes be made available to the world, at this point.
+
+    > Footnote 2.
+
+Thue is arguably important solely(__footnote 3__) because it's what apparently keeps [my Wikipedia page](https://en.wikipedia.org/wiki/John_Colagioia) from deletion.
+
+    > Footnote 3.
+
+I couldn't pass up the opportunity for a nested footnote.  Sorry.
 
     > Exit.
 
