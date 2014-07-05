@@ -41,8 +41,6 @@ int main(int argc, char *argv[]) {
     int     state,
             flagstate,
             i,
-            j,
-            k,
             order,
             temp,
             rnum[64];
@@ -84,7 +82,7 @@ int main(int argc, char *argv[]) {
     while (!feof (infile)) {
         line = nextinput (infile);
         if (state == 0) {
-            if (line != NULL && !strlen (line)) {
+            if (line == NULL || !strlen (line)) {
                 continue;
             }
             c = strstr (line, SEP);
@@ -114,6 +112,8 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    fclose (infile);
+
     if (debug) {
         printf ("Initial:  \"%s\"\n", dataspace);
     }
@@ -122,8 +122,8 @@ int main(int argc, char *argv[]) {
     state = 1;
     while (state) {
         /* Get all valid LHSs */
-        j = 1;
-        k = 0;
+        int j = 1;
+        int k = 0;
         c = dataspace;
         for (i=0;i<ruleidx;i++) {
             do {
@@ -184,7 +184,7 @@ int main(int argc, char *argv[]) {
         } else {
             i = !strcmp (rulebase[temp].rhs, ":::");
             if (i) {
-                scanf (" %[^\n]", tempstr);
+                scanf (" %64[^\n]", tempstr);
             }
         }
 
